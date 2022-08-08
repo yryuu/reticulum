@@ -124,11 +124,12 @@ config :ret,
   upload_encryption_key: "a8dedeb57adafa7821027d546f016efef5a501bd",
   bot_access_key: ""
 
+hubs_admin_internal_hostname = System.get_env("HUBS_ADMIN_INTERNAL_HOSTNAME") || host
 hubs_client_internal_hostname = System.get_env("HUBS_CLIENT_INTERNAL_HOSTNAME") || host
 
 config :ret, Ret.PageOriginWarmer,
+  admin_page_origin: "https://#{hubs_admin_internal_hostname}:8989",
   hubs_page_origin: "https://#{hubs_client_internal_hostname}:8080",
-  admin_page_origin: "https://#{host}:8989",
   spoke_page_origin: "https://#{host}:9090",
   insecure_ssl: true
 
