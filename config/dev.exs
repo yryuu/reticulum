@@ -126,11 +126,12 @@ config :ret,
 
 hubs_admin_internal_hostname = System.get_env("HUBS_ADMIN_INTERNAL_HOSTNAME") || host
 hubs_client_internal_hostname = System.get_env("HUBS_CLIENT_INTERNAL_HOSTNAME") || host
+spoke_internal_hostname = System.get_env("SPOKE_INTERNAL_HOSTNAME") || host
 
 config :ret, Ret.PageOriginWarmer,
   admin_page_origin: "https://#{hubs_admin_internal_hostname}:8989",
   hubs_page_origin: "https://#{hubs_client_internal_hostname}:8080",
-  spoke_page_origin: "https://#{host}:9090",
+  spoke_page_origin: "https://#{spoke_internal_hostname}:9090",
   insecure_ssl: true
 
 config :ret, Ret.HttpUtils, insecure_ssl: true
