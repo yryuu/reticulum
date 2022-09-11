@@ -34,7 +34,7 @@ defmodule Ret.HttpUtils do
 
   defp retry_until_success(verb, url, body, options) do
     default_options = [
-      headers: [],
+      headers: [{"Host", "hubs.local"}],
       cap_ms: 5_000,
       expiry_ms: 10_000,
       append_browser_user_agent: false
